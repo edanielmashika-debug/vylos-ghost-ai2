@@ -239,3 +239,4 @@ detailed explanations, cool features, and exercises to boost your skills. Give i
   <img src="public/readme/readme-jsmpro.webp" alt="Project Banner">
 </a>
 "# vylos-ghost-ai2" 
+"# vylos-ghost-ai2" 
