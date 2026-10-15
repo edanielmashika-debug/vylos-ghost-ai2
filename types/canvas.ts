@@ -31,14 +31,14 @@ export const SHAPE_DEFAULTS: Record<NodeShape, { width: number; height: number }
   hexagon: { width: 140, height: 120 },
 }
 
-export interface CanvasNodeData extends Record<string, unknown> {
+export type CanvasNodeData ={
   label: string
   color?: string
   textColor?: string
   shape?: NodeShape
 }
 
-export interface CanvasEdgeData extends Record<string, unknown> {
+export type CanvasEdgeData = {
   label?: string
 }
 

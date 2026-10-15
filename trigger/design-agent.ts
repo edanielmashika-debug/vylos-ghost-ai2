@@ -223,7 +223,11 @@ export const designAgent = task({
         const edges = flow.get("edges");
 
         for (const call of actionCalls) {
-          applyToolCall(call, nodes, edges);
+          applyToolCall(
+              call,
+              nodes as unknown as Parameters<typeof applyToolCall>[1],
+              edges as unknown as Parameters<typeof applyToolCall>[2], 
+          );
         }
       });
 

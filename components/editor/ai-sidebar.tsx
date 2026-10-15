@@ -26,6 +26,13 @@ import { useRealtimeRun } from "@trigger.dev/react-hooks"
 import { AiStatusFeedMessageSchema, ChatFeedMessageSchema } from "@/types/tasks"
 import { cn } from "@/lib/utils"
 
+type FlowStorage = {
+  flow?: {
+    nodes?: Record<string, unknown>
+    edges?: Record<string, unknown>
+  }
+}
+
 const FEED_ID = "ai-status-feed"
 const CHAT_FEED_ID = "ai-chat"
 
@@ -126,14 +133,14 @@ export function AiSidebar({ isOpen, onClose, roomId, projectId }: AiSidebarProps
 
   // Canvas storage for spec generation context
   // useStorage immutably serializes LiveMap as a plain readonly object, so use Object.values
-  const nodesArray = useStorage((root) => {
-    const m = root.flow?.nodes
-    return m ? Object.values(m) : []
-  })
-  const edgesArray = useStorage((root) => {
-    const m = root.flow?.edges
-    return m ? Object.values(m) : []
-  })
+const nodesArray = useStorage((root) => {
+  const m = (root as unknown as FlowStorage).flow?.nodes
+  return m ? Object.values(m) : []
+})
+const edgesArray = useStorage((root) => {
+  const m = (root as unknown as FlowStorage).flow?.edges
+  return m ? Object.values(m) : []
+})
 
   const self = useSelf()
   const updateMyPresence = useUpdateMyPresence()
